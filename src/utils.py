@@ -3,15 +3,32 @@ import pandas as pd
 from unidecode import unidecode
 
 def clean_week(week):
-    if isinstance(week, str):
-        week = week.strip()
-        if week.isdigit():
-            return int(week)
-        digits = re.sub(r"\D", "", week)
-        return int(digits) if digits else None
-    if pd.notna(week):
-        return int(week)
+    if pd.isna(week):
+        return None
+
+    week_str = str(week).strip().lower()
+
+    try:
+        val = int(float(week_str))
+        if 1 <= val <= 53:
+            return val
+    except:
+        pass
+
+    match = re.search(r"[wW][^\d]*?(\d{1,2})", week_str)
+    if match:
+        val = int(match.group(1))
+        return val if 1 <= val <= 53 else None
+
+    match = re.search(r"(\d{1,2})$", week_str)
+    if match:
+        val = int(match.group(1))
+        return val if 1 <= val <= 53 else None
+
     return None
+
+
+
 
 def infer_province_from_filename(filename):
     provinces = [
@@ -50,6 +67,8 @@ def parse_generalized_sheet(sheet_df, province, district):
         "provincia",
         "2",
         "distritos maputo provincia",
+        "sofala",
+        "tete",
     }:
         print(f"⚠️ Skipping invalid district: {district}")
         return
@@ -142,4 +161,6 @@ def parse_generalized_sheet(sheet_df, province, district):
                     }
 
 def normalize(text):
-    return unidecode(str(text).lower().strip())
+    text = unidecode(str(text).lower().strip())
+    #text = text.replace("cidade", "city")
+    return text
