@@ -5,7 +5,6 @@ import rasterstats as rs
 from pathlib import Path
 import os
 
-# Define AA_DATA_DIR environment variable if not already set
 AA_DATA_DIR = os.getenv("AA_DATA_DIR")
 
 # Load admin boundaries (ADM2)
