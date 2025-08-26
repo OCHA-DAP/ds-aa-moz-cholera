@@ -18,12 +18,29 @@ capital_districts = [
     "Cidade de Chimoio",
 ]
 
+month_order = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]
+
 capitals_threshold = 300
 default_threshold = 100
+trend_threshold = 0
+number_of_districts = 2
 
 district_case_limit = 1500
-province_case_limit = 2100
+province_case_limit = 5000
 
 # setting both of these to zero for now
-winsorising_lower_limit = 0.1
+winsorising_lower_limit = 0.2
 winsorising_upper_limit = 0
