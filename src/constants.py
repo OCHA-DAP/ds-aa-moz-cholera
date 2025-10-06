@@ -39,7 +39,7 @@ trend_threshold = 0
 number_of_districts = 2
 
 district_case_limit = 1500
-province_case_limit = 2100
+province_case_limit = 2500
 
 # setting both of these to zero for now
 winsorising_lower_limit = 0
