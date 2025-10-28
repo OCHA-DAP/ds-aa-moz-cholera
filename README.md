@@ -17,6 +17,10 @@ The analysis relies on data hosted in a secure Azure Blob Storage environment. D
 - `src/` – Supporting scripts for data processing and visualization.
 - `docs/` – Internal documentation on methodology and findings.
 
+## Environment
+- Python 3.12.2
+- GDAL 3.6.4
+
 ## Requirements
 
 Install dependencies via:
